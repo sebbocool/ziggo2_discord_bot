@@ -1,9 +1,9 @@
 from token_long import TOKEN, DEEPLTOKEN
 import discord
 import deepl
+import random
 
 translator = deepl.Translator(DEEPLTOKEN)
-
 
 class ziggo2(discord.Client):
     async def on_ready(self):
@@ -31,6 +31,12 @@ class ziggo2(discord.Client):
         else:
             await msg.channel.send('<@228889592055463948>')
 
+    async def ziggo_quote(self, msg):
+        with open("ziggoquotes.txt", "r") as file:
+            quotes = file.readlines()
+            quote = "ziggokill: " + random.choice(quotes).strip()
+        await msg.channel.send(quote)
+
     ### READ MESSAGES ###
     async def on_message(self, message):
         if message.author == self.user:
@@ -41,6 +47,12 @@ class ziggo2(discord.Client):
 
         if message.content[:3] == "/to":
             await self.translate(message)
+
+        if message.content == "/ziggotalk":
+            await self.ziggo_quote(message)
+
+        if message.content == "/help":
+            pass
 
 
 intents = discord.Intents.default()
