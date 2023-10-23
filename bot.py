@@ -67,13 +67,15 @@ class ziggo2(discord.Client):
             (6, f"{author} misses, but {target} uses anyway!"),
             (5, f"{author} kills {target}! Looks like someone forgot to build."),
             (5, f"{target} hits a crossbow airshot!"),
-            (4, f"{author} airshots {target}! It's a force!"),
+            (5, f"{author} kills {target}! He was on kritz all along!"),
+            (4, f"{author} gets headshot mid air!"),
             (4, f"{author} airshots {target}! It's a force!"),
             (3, f"{author} drops {target}!"),
             (3, f"{target} was hiding in the forward spawn..."),
             (2, f"Oh no! {author} lost connection to the server!"),
             (2, f"{author} airshots {target}! It's a drop!"),
-            (1, f"{author} drops {target}, and kills them all!"),
+            (2, f"{author} drops {target}, and kills them all!"),
+            (1, f"{author} disconnected. (VAC banned from secured server)"),
         ]
 
         weights, population = zip(*choices)
