@@ -20,6 +20,8 @@ class ziggo2(discord.Client):
                     await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="JA"))
                 case "de":  # German
                     await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="DE"))
+                case "en":  # English
+                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="EN"))
                 case other:
                     await msg.channel.send("Useless language detected.")
 
