@@ -6,6 +6,7 @@ import asyncio
 
 translator = deepl.Translator(DEEPLTOKEN)
 
+
 class ziggo2(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
@@ -48,22 +49,40 @@ class ziggo2(discord.Client):
         author = msg.author.mention
 
         await msg.channel.send(f"{author} bombs {target}, and...")
-
         await asyncio.sleep(1)
 
-        result = random.choices([
-            f"{author} beefed.",
-            f"{author} forced {target}!",
-            f"{author} dropped {target}!",
-            f"{author} killed them all!"
-        ], [50, 30, 15, 5])[0]
+        choices = [
+            (10, f"{author} beefs."),
+            (10, f"{author} fails his jump..."),
+            (9, f"{author} misses his rockets..."),
+            (9, f"{author} gets denied."),
+            (8, f"{author} craters."),
+            (8, f"{author} dies to a trap."),
+            (8, f"{target} surfs away."),
+            (7, f"{author} gets airshot!"),
+            (7, f"{author} forces {target}!"),
+            (7, f"{author} dies, but forces {target} nonetheless!"),
+            (6, f"{author} gets airpiped!"),
+            (6, f"{author} forces {target}, and gets out!"),
+            (6, f"{author} misses, but {target} uses anyway!"),
+            (5, f"{author} kills {target}! Looks like someone forgot to build."),
+            (5, f"{target} hits a crossbow airshot!"),
+            (4, f"{author} airshots {target}! It's a force!"),
+            (4, f"{author} airshots {target}! It's a force!"),
+            (3, f"{author} drops {target}!"),
+            (3, f"{target} was hiding in the forward spawn..."),
+            (2, f"Oh no! {author} lost connection to the server!"),
+            (2, f"{author} airshots {target}! It's a drop!"),
+            (1, f"{author} drops {target}, and kills them all!"),
+        ]
+
+        weights, population = zip(*choices)
+
+        result = random.choices(population, weights)[0]
 
         await msg.channel.send(result)
 
-
     ### READ MESSAGES ###
-
-
 
     async def on_message(self, message):
         if message.author == self.user:
