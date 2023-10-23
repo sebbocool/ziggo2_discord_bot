@@ -2,6 +2,7 @@ from token_long import TOKEN, DEEPLTOKEN
 import discord
 import deepl
 import random
+import asyncio
 
 translator = deepl.Translator(DEEPLTOKEN)
 
@@ -39,7 +40,28 @@ class ziggo2(discord.Client):
             quote = "ziggokill: " + random.choice(quotes).strip()
         await msg.channel.send(quote)
 
-    ### READ MESSAGES ##¤
+    async def bomba(self, msg):
+        target = msg.content[7:]
+        if len(target) == 0:
+            target = "the Medic"
+
+        author = msg.author.mention
+
+        await msg.channel.send(f"{author} bombs {target}, and...")
+
+        await asyncio.sleep(1)
+
+        result = random.choices([
+            f"{author} beefed.",
+            f"{author} forced {target}!",
+            f"{author} dropped {target}!",
+            f"{author} killed them all!"
+        ], [50, 30, 15, 5])[0]
+
+        await msg.channel.send(result)
+
+
+    ### READ MESSAGES ###
 
 
 
@@ -55,6 +77,9 @@ class ziggo2(discord.Client):
 
         elif message.content.startswith("/ziggotalk"):
             await self.ziggo_quote(message)
+
+        elif message.content.startswith("/bomba"):
+            await self.bomba(message)
 
         elif message.content.startswith("/help"):
             pass
