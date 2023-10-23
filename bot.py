@@ -39,21 +39,24 @@ class ziggo2(discord.Client):
             quote = "ziggokill: " + random.choice(quotes).strip()
         await msg.channel.send(quote)
 
-    ### READ MESSAGES ###
+    ### READ MESSAGES ##¤
+
+
+
     async def on_message(self, message):
         if message.author == self.user:
             return
 
-        if message.content[:10] == "/pingziggo":
+        if message.content.startswith("/pingziggo"):
             await self.pingziggo(message)
 
-        if message.content[:3] == "/to":
+        elif message.content.startswith("/to"):
             await self.translate(message)
 
-        if message.content == "/ziggotalk":
+        elif message.content.startswith("/ziggotalk"):
             await self.ziggo_quote(message)
 
-        if message.content == "/help":
+        elif message.content.startswith("/help"):
             pass
 
 
