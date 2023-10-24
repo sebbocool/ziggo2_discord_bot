@@ -92,7 +92,6 @@ class ziggo2(discord.Client):
         await msg.channel.send(result)
 
     ### READ MESSAGES ###
-
     async def on_message(self, message):
         if message.author == self.user:
             return
