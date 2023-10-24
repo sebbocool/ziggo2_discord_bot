@@ -67,17 +67,22 @@ class ziggo2(discord.Client):
             (7, f"{author} forces {target}!"),
             (7, f"{author} dies, but forces {target} nonetheless!"),
             (6, f"{author} gets airpiped!"),
-            (6,f"{author} dominates {target}!"),
-            (6,f"{target} pulls off a clutch save with the ÜberSaw!"),
+            (6, f"{author} dominates {target}!"),
+            (6, f"{target} pulls off a clutch save with the ÜberSaw!"),
             (6, f"{author} forces {target}, and gets out!"),
             (6, f"{author} misses, but {target} uses anyway!"),
             (5, f"{author} kills {target}! Looks like someone forgot to build."),
             (5, f"{target} hits a crossbow airshot!"),
             (5, f"{author} kills {target}! He was on kritz all along!"),
+            (5, f"{author} syncs his rockets! It's a force!"),
             (4, f"{author} gets headshot mid air!"),
             (4, f"{author} airshots {target}! It's a force!"),
+            (4, f"{target} lives on 1 HP."),
+            (4, f"{target} gets forced by the team's spam."),
+            (3, f"{author} is out of ammo?"),
             (3, f"{author} drops {target}!"),
             (3, f"{target} was hiding in the forward spawn..."),
+            (3, f"{author} syncs his rockets! It's a drop!"),
             (2, f"{author} lost connection to the server!"),
             (2, f"{author} timed out."),
             (2, f"{author} airshots {target}! It's a drop!"),
@@ -131,6 +136,7 @@ class ziggo2(discord.Client):
                     - `/ziggotalk`: Need some motivation? Get a real quote from one of ziggo's logs.
                     - `/bomba [target]`: Simulate a bomb, will you drop the medic or feed embarrassingly?"""
             await message.channel.send(help)
+
 
 intents = discord.Intents.default()
 intents.message_content = True
