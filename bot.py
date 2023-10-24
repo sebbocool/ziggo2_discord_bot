@@ -3,8 +3,15 @@ import discord
 import deepl
 import random
 import asyncio
+import random
 
 translator = deepl.Translator(DEEPLTOKEN)
+
+def get_ziggo_quote():
+    with open("ziggoquotes.txt", "r") as file:
+        quotes = file.readlines()
+        quote = "ziggokill: " + random.choice(quotes).strip()
+    return quote
 
 
 class ziggo2(discord.Client):
@@ -36,9 +43,7 @@ class ziggo2(discord.Client):
             await msg.channel.send('<@228889592055463948>')
 
     async def ziggo_quote(self, msg):
-        with open("ziggoquotes.txt", "r") as file:
-            quotes = file.readlines()
-            quote = "ziggokill: " + random.choice(quotes).strip()
+        quote = get_ziggo_quote()
         await msg.channel.send(quote)
 
     async def bomba(self, msg):
@@ -98,6 +103,15 @@ class ziggo2(discord.Client):
         if message.author == self.user:
             return
 
+        if random.randint(1, 20) == 10:
+            beast_emoji = discord.utils.get(message.guild.emojis, name="beast")
+            cringe_emoji = discord.utils.get(message.guild.emojis, name="cringe")
+            ziggo_emoji = discord.utils.get(message.guild.emojis, name="ziggo")
+
+            emoji_to_use = random.choice([beast_emoji, cringe_emoji, ziggo_emoji])
+            if emoji_to_use:
+                await message.add_reaction(emoji_to_use)
+
         if message.content.startswith("/pingziggo"):
             await self.pingziggo(message)
 
@@ -110,12 +124,17 @@ class ziggo2(discord.Client):
         elif message.content.startswith("/bomba"):
             await self.bomba(message)
 
+        elif message.type == discord.MessageType.new_member:
+            reply = get_ziggo_quote()
+            await message.reply(reply)
+
         elif message.content.startswith("/help"):
             pass
 
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 
 client = ziggo2(intents=intents)
 client.run(TOKEN)
