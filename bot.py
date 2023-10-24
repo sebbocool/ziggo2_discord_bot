@@ -3,6 +3,7 @@ import discord
 import deepl
 import random
 import asyncio
+import random
 
 translator = deepl.Translator(DEEPLTOKEN)
 
@@ -96,6 +97,15 @@ class ziggo2(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:
             return
+
+        if random.randint(1, 20) == 10:
+            beast_emoji = discord.utils.get(message.guild.emojis, name="beast")
+            cringe_emoji = discord.utils.get(message.guild.emojis, name="cringe")
+            ziggo_emoji = discord.utils.get(message.guild.emojis, name="ziggo")
+
+            emoji_to_use = random.choice([beast_emoji, cringe_emoji, ziggo_emoji])
+            if emoji_to_use:
+                await message.add_reaction(emoji_to_use)
 
         if message.content.startswith("/pingziggo"):
             await self.pingziggo(message)
