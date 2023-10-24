@@ -6,6 +6,12 @@ import asyncio
 
 translator = deepl.Translator(DEEPLTOKEN)
 
+def get_ziggo_quote():
+    with open("ziggoquotes.txt", "r") as file:
+        quotes = file.readlines()
+        quote = "ziggokill: " + random.choice(quotes).strip()
+    return quote
+
 
 class ziggo2(discord.Client):
     async def on_ready(self):
@@ -36,9 +42,7 @@ class ziggo2(discord.Client):
             await msg.channel.send('<@228889592055463948>')
 
     async def ziggo_quote(self, msg):
-        with open("ziggoquotes.txt", "r") as file:
-            quotes = file.readlines()
-            quote = "ziggokill: " + random.choice(quotes).strip()
+        quote = get_ziggo_quote()
         await msg.channel.send(quote)
 
     async def bomba(self, msg):
