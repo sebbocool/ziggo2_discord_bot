@@ -100,12 +100,11 @@ class ziggo2(discord.Client):
         await msg.channel.send(result)
 
     ### READ MESSAGES ###
-
     async def on_message(self, message):
         if message.author == self.user:
             return
 
-        if random.randint(1, 20) == 10:
+        if random.randint(1, 12) == 6:
             beast_emoji = discord.utils.get(message.guild.emojis, name="beast")
             cringe_emoji = discord.utils.get(message.guild.emojis, name="cringe")
             ziggo_emoji = discord.utils.get(message.guild.emojis, name="ziggo")
@@ -131,7 +130,15 @@ class ziggo2(discord.Client):
             await message.reply(reply)
 
         elif message.content.startswith("/help"):
-            pass
+            help = """
+            Hello! I'm ziggo2.0, created by ziggo and noot. 
+                   
+    Commands currently available:                    
+                    - `/pingziggo [1-10]`: Need ziggo's attention? Is he late for the offi? Just wanna disturb? Go wild.
+                    - `/to [se/de/en/ja]`: Respond to a message to translate in to the selected target language.
+                    - `/ziggotalk`: Need some motivation? Get a real quote from one of ziggo's logs.
+                    - `/bomba [target]`: Simulate a bomb, will you drop the medic or feed embarrassingly?"""
+            await message.channel.send(help)
 
 
 intents = discord.Intents.default()
