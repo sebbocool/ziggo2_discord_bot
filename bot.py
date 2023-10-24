@@ -1,7 +1,6 @@
 from token_long import TOKEN, DEEPLTOKEN
 import discord
 import deepl
-import random
 import asyncio
 import random
 
@@ -74,8 +73,11 @@ class ziggo2(discord.Client):
             (6, f"{author} misses, but {target} uses anyway!"),
             (5, f"{author} kills {target}! Looks like someone forgot to build."),
             (5, f"{target} hits a crossbow airshot!"),
-            (5, f"{author} kills {target}! He was on kritz all along!"),
+            (5, f"{author} kills {target}! He was on Kritzkrieg all along!"),
             (5, f"{author} syncs his rockets! It's a force!"),
+            (5, f"{author} misses {target}, but kills a Soldier instead!"),
+            (5, f"{author} misses {target}, but kills a Scout instead!"),
+            (4, f"{author} misses {target}, but kills the Demo instead!"),
             (4, f"{author} gets headshot mid air!"),
             (4, f"{author} airshots {target}! It's a force!"),
             (4, f"{target} lives on 1 HP."),
