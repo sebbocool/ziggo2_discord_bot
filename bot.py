@@ -1,7 +1,6 @@
 from token_long import TOKEN, DEEPLTOKEN
 import discord
 import deepl
-import random
 import asyncio
 import random
 
