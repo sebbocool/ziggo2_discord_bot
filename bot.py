@@ -119,6 +119,10 @@ class ziggo2(discord.Client):
         elif message.content.startswith("/bomba"):
             await self.bomba(message)
 
+        elif message.type == discord.MessageType.new_member:
+            reply = get_ziggo_quote()
+            await message.reply(reply)
+
         elif message.content.startswith("/help"):
             pass
 
