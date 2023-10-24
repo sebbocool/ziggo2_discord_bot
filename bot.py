@@ -128,6 +128,7 @@ class ziggo2(discord.Client):
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True
 
 client = ziggo2(intents=intents)
 client.run(TOKEN)
