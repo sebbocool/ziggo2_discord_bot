@@ -23,13 +23,13 @@ class ziggo2(discord.Client):
             referenced_message = await msg.channel.fetch_message(msg.reference.message_id)
             match msg.content[4:].lower():
                 case "se":  # Swedish
-                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="SV"))
+                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="SV"), reference=msg)
                 case "ja":  # Japanese
-                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="JA"))
+                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="JA"), reference=msg)
                 case "de":  # German
-                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="DE"))
+                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="DE"), reference=msg)
                 case "en":  # English
-                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="EN-US"))
+                    await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="EN-US"), reference=msg)
                 case other:
                     await msg.channel.send("Useless language detected.")
 
@@ -43,7 +43,7 @@ class ziggo2(discord.Client):
 
     async def ziggo_quote(self, msg):
         quote = get_ziggo_quote()
-        await msg.channel.send(quote)
+        await msg.channel.send(quote, reference=msg)
 
     async def bomba(self, msg):
         target = msg.content[7:]
@@ -106,7 +106,7 @@ class ziggo2(discord.Client):
 
         if "@everyone" in message.content:
             await message.channel.fetch_message(message.id)
-            await message.channel.send("https://media.tenor.com/uFeEjGFzmc0AAAAC/stop.gif")
+            await message.channel.send("https://media.tenor.com/uFeEjGFzmc0AAAAC/stop.gif", reference=message)
             return
 
         if random.randint(1, 12) == 6:
