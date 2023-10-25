@@ -118,7 +118,7 @@ class ziggo2(discord.Client):
             if emoji_to_use:
                 await message.add_reaction(emoji_to_use)
 
-        if message.content.startswith("/pingziggo"):
+        if message.content.startswith("/pingziggo") and message.channel.name == "bot":
             await self.pingziggo(message)
 
         elif message.content.startswith("/to"):
