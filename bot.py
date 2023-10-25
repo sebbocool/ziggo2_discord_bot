@@ -104,6 +104,11 @@ class ziggo2(discord.Client):
         if message.author == self.user:
             return
 
+        if "@everyone" in message.content:
+            await message.channel.fetch_message(message.id)
+            await message.channel.send("https://media.tenor.com/uFeEjGFzmc0AAAAC/stop.gif")
+            return
+
         if random.randint(1, 12) == 6:
             beast_emoji = discord.utils.get(message.guild.emojis, name="beast")
             cringe_emoji = discord.utils.get(message.guild.emojis, name="cringe")
