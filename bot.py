@@ -20,7 +20,7 @@ class ziggo2(discord.Client):
             return
 
         ### sometimes react with a random emoji
-        if random.randint(1, 12) == 6:
+        if random.randint(1, 18) == 6:
             beast_emoji = discord.utils.get(message.guild.emojis, name="beast")
             cringe_emoji = discord.utils.get(message.guild.emojis, name="cringe")
             ziggo_emoji = discord.utils.get(message.guild.emojis, name="ziggo")
