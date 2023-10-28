@@ -1,12 +1,15 @@
 import deepl
 from token_long import DEEPLTOKEN
-from command import Command
+from .command import Command
 
 translator = deepl.Translator(DEEPLTOKEN)
-async def translate(msg):
-    if msg.content[:3] == "/to" and msg.reference:
+
+
+async def translate(msg, arg: str):
+    lang = arg.strip()
+    if msg.reference:
         referenced_message = await msg.channel.fetch_message(msg.reference.message_id)
-        match msg.content[4:].lower():
+        match lang.lower():
             case "se":  # Swedish
                 await msg.channel.send(translator.translate_text(referenced_message.content, target_lang="SV"),
                                        reference=msg)
@@ -22,5 +25,6 @@ async def translate(msg):
             case other:
                 await msg.channel.send("Useless language detected.")
 
-translate = Command("translate", "/to [se/de/en/ja]`: Respond to a message to translate in to the selected target "
-                                 "language.", translate)
+
+translate = Command("to", " [se/de/en/ja]`: Respond to a message to translate in to the selected target "
+                          "language.", translate)

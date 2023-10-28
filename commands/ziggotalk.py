@@ -1,5 +1,5 @@
 from random import choice
-from command import Command
+from .command import Command
 
 async def ziggo_quote(msg):
     quote = get_ziggo_quote()
@@ -11,4 +11,4 @@ def get_ziggo_quote():
         quote = "ziggokill: " + choice(quotes).strip()
     return quote
 
-ziggotalk = Command("ziggotalk", "Get a random Ziggo quote.", ziggo_quote)
+ziggotalk = Command("ziggotalk", "`: Need some motivation? Get a real quote from one of ziggo's logs.", ziggo_quote)
