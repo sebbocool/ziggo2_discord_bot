@@ -11,7 +11,7 @@ async def ziggo_quote(msg: discord.Message):
 
 
 def get_ziggo_quote():
-    with open("ziggoquotes.txt", "r") as file:
+    with open("resources/ziggoquotes.txt", "r") as file:
         quotes = file.readlines()
         quote = "ziggokill: " + random.choice(quotes).strip()
     return quote
