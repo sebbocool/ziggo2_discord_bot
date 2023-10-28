@@ -2,17 +2,21 @@ import discord
 
 from ziggo2_discord_bot.commands.command import Command
 
+ZIGGO_MENTION = '<@228889592055463948>'
+
 
 async def pingziggo(msg: discord.Message, arg: str):
-    if msg.channel.name == "bot":
-        amount = int(arg)
-        if amount != "" and 10 >= int(amount) > 0:
-            for i in range(int(amount)):
-                await msg.channel.send('<@228889592055463948>')
-        else:
-            await msg.channel.send('< @228889592055463948>')
-    else:
+    if msg.channel.name != "bot":
         await msg.channel.send("This command can only be used in #bot", reference=msg)
+        return
+
+    amount = int(arg)
+    if amount == "" or (10 < int(amount) or int(amount) <= 0):
+        await msg.channel.send(ZIGGO_MENTION)
+        return
+
+    for i in range(int(amount)):
+        await msg.channel.send(ZIGGO_MENTION)
 
 
 pingziggo = Command(
