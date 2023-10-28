@@ -1,8 +1,8 @@
-from commands.ziggotalk import ziggotalk
-from commands.bomba import bomba
-from commands.pingziggo import pingziggo
-from commands.translate import translate
-from commands.help_command import help_command
+from ziggo2_discord_bot.commands.ziggotalk import ziggotalk
+from ziggo2_discord_bot.commands.bomba import bomba
+from ziggo2_discord_bot.commands.pingziggo import pingziggo
+from ziggo2_discord_bot.commands.translate import translate
+from ziggo2_discord_bot.commands.help_command import help_command
 
 all_commands = {}
 
@@ -16,6 +16,3 @@ add_command(bomba)
 add_command(pingziggo)
 add_command(translate)
 add_command(help_command)
-
-if __name__ == '__main__':
-    print(all_commands.keys())

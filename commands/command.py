@@ -1,4 +1,4 @@
-class Command():
+class Command:
     def __init__(self, name: str, description: str, func: callable):
         self.name = name
         self.description = description

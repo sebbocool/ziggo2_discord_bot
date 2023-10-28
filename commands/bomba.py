@@ -1,9 +1,12 @@
-from .command import Command
 import random
 import asyncio
 
+import discord
 
-async def bomba(msg, arg: str):
+from ziggo2_discord_bot.commands.command import Command
+
+
+async def bomba(msg: discord.Message, arg: str):
     target = "the Medic" if arg is None else arg
 
     author = msg.author.mention
@@ -55,4 +58,8 @@ async def bomba(msg, arg: str):
 
     await msg.channel.send(result)
 
-bomba = Command("bomba", " [target]`: Simulate a bomb, will you drop the medic or feed embarrassingly?", bomba)
+bomba = Command(
+    name="bomba",
+    description=" [target]`: Simulate a bomb, will you drop the medic or feed embarrassingly?",
+    func=bomba
+)
