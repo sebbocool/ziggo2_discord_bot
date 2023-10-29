@@ -1,7 +1,7 @@
 import discord
 import random
 
-from token_long import TOKEN
+from config import DISCORD_TOKEN
 from commands import run_command, COMMAND_PREFIX
 
 
@@ -40,4 +40,4 @@ intents.message_content = True
 intents.members = True
 
 client = ziggo2(intents=intents)
-client.run(TOKEN)
+client.run(DISCORD_TOKEN)

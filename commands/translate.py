@@ -1,10 +1,10 @@
 import deepl
 import discord
 
-from token_long import DEEPLTOKEN
+from config import DEEPL_TOKEN
 from commands.command import Command
 
-translator = deepl.Translator(DEEPLTOKEN)
+translator = deepl.Translator(DEEPL_TOKEN)
 
 
 async def translate(msg: discord.Message, arg: str):
