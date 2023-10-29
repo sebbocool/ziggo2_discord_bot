@@ -1,8 +1,8 @@
 import discord
 import random
 
-from ziggo2_discord_bot.token_long import TOKEN
-from ziggo2_discord_bot.commands import run_command, COMMAND_PREFIX
+from token_long import TOKEN
+from commands import run_command, COMMAND_PREFIX
 
 
 async def add_random_reaction(message):

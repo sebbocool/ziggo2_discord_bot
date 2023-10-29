@@ -1,8 +1,8 @@
 import deepl
 import discord
 
-from ziggo2_discord_bot.token_long import DEEPLTOKEN
-from ziggo2_discord_bot.commands.command import Command
+from token_long import DEEPLTOKEN
+from commands.command import Command
 
 translator = deepl.Translator(DEEPLTOKEN)
 

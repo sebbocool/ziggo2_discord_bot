@@ -1,8 +1,8 @@
-from ziggo2_discord_bot.commands.command import Command
+from commands.command import Command
 
 
 async def help_command(msg):
-    from ziggo2_discord_bot.commands import all_commands as cmds
+    from commands import all_commands as cmds
     help_txt = """
                Hello! I'm ziggo2.0, created by ziggo and noot.
                 

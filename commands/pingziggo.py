@@ -1,6 +1,6 @@
 import discord
 
-from ziggo2_discord_bot.commands.command import Command
+from commands.command import Command
 
 ZIGGO_MENTION = '<@228889592055463948>'
 

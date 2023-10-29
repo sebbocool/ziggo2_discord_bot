@@ -2,7 +2,7 @@ import random
 
 import discord
 
-from ziggo2_discord_bot.commands.command import Command
+from commands.command import Command
 
 
 async def ziggo_quote(msg: discord.Message):

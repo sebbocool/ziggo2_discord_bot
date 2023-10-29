@@ -3,7 +3,7 @@ import asyncio
 
 import discord
 
-from ziggo2_discord_bot.commands.command import Command
+from commands.command import Command
 
 
 async def bomba(msg: discord.Message, arg: str):
