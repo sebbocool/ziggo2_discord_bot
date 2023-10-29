@@ -28,7 +28,7 @@ class ziggo2(discord.Client):
             await message.channel.send("https://media.tenor.com/uFeEjGFzmc0AAAAC/stop.gif", reference=message)
             return
 
-        if random.randint(1, 12) == 6:
+        if random.randint(1, 18) == 6:
             await add_random_reaction(message)
 
         if message.content.startswith(COMMAND_PREFIX):
