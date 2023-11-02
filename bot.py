@@ -5,7 +5,7 @@ from config import DISCORD_TOKEN
 from commands import run_command, COMMAND_PREFIX
 
 
-async def add_random_reaction(message):
+async def add_random_reaction(message: discord.Message):
     beast_emoji = discord.utils.get(message.guild.emojis, name="beast")
     cringe_emoji = discord.utils.get(message.guild.emojis, name="cringe")
     ziggo_emoji = discord.utils.get(message.guild.emojis, name="ziggo")
@@ -14,17 +14,16 @@ async def add_random_reaction(message):
         await message.add_reaction(emoji_to_use)
 
 
-class ziggo2(discord.Client):
+class Ziggo2(discord.Client):
 
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
 
-    async def on_message(self, message):
+    async def on_message(self, message: discord.Message):
         if message.author == self.user:
             return
 
         if "@everyone" in message.content:
-            await message.channel.fetch_message(message.id)
             await message.channel.send("https://media.tenor.com/uFeEjGFzmc0AAAAC/stop.gif", reference=message)
             return
 
@@ -39,5 +38,5 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
 
-client = ziggo2(intents=intents)
+client = Ziggo2(intents=intents)
 client.run(DISCORD_TOKEN)
