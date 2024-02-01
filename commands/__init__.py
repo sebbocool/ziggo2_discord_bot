@@ -4,7 +4,9 @@ from commands.ziggotalk import ziggotalk
 from commands.bomba import bomba
 from commands.pingziggo import pingziggo
 from commands.translate import translate
+from commands.extend import extend
 from commands.help_command import help_command
+
 
 COMMAND_PREFIX = "/"
 
@@ -19,6 +21,7 @@ add_command(ziggotalk)
 add_command(bomba)
 add_command(pingziggo)
 add_command(translate)
+add_command(extend)
 add_command(help_command)
 
 
