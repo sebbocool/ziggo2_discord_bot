@@ -8,7 +8,7 @@ from commands.extend import extend
 from commands.help_command import help_command
 
 
-COMMAND_PREFIX = "/"
+COMMAND_PREFIX = "!"
 
 all_commands = {}
 
