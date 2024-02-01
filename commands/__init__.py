@@ -13,20 +13,20 @@ COMMAND_PREFIX = "/"
 all_commands = {}
 
 
-def add_command(command) -> None:
-    all_commands[COMMAND_PREFIX + command.get_name()] = command
+def add_command(command, prefix=COMMAND_PREFIX) -> None:
+    all_commands[prefix + command.get_name()] = command
 
 
 add_command(ziggotalk)
 add_command(bomba)
 add_command(pingziggo)
 add_command(translate)
-add_command(extend)
+add_command(extend, "!")
 add_command(help_command)
 
 
 async def run_command(message: discord.Message):
-    name, *arg = message.content.strip().split(" ", len(COMMAND_PREFIX))
+    name, *arg = message.content.strip().split(" ", 1)
     if name in all_commands:
         arg = arg[0] if arg else None
         if arg:
