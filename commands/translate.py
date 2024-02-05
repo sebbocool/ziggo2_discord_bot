@@ -7,7 +7,7 @@ from commands.command import Command
 translator = deepl.Translator(DEEPL_TOKEN)
 
 
-async def translate(msg: discord.Message, arg: str):
+async def translate(msg: discord.Message, arg: str | None):
     lang = arg.strip()
     if msg.reference:
         referenced_message = await msg.channel.fetch_message(msg.reference.message_id)
@@ -24,7 +24,7 @@ async def translate(msg: discord.Message, arg: str):
             case "en":  # English
                 await msg.channel.send(str(translator.translate_text(referenced_message.content, target_lang="EN-US")),
                                        reference=msg)
-            case other:
+            case _:
                 await msg.channel.send("Useless language detected.")
 
 

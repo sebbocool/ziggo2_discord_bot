@@ -5,7 +5,7 @@ import discord
 from commands.command import Command
 
 
-async def ziggo_quote(msg: discord.Message):
+async def ziggo_quote(msg: discord.Message, _arg: str | None):
     quote = get_ziggo_quote()
     await msg.channel.send(quote, reference=msg)
 
