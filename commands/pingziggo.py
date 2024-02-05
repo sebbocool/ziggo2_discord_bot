@@ -5,7 +5,7 @@ from commands.command import Command
 ZIGGO_MENTION = '<@228889592055463948>'
 
 
-async def pingziggo(msg: discord.Message, arg: str):
+async def pingziggo(msg: discord.Message, arg: str | None):
     if msg.channel.name != "bot":
         await msg.channel.send("This command can only be used in #bot", reference=msg)
         return

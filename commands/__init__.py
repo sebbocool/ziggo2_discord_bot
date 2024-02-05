@@ -7,7 +7,6 @@ from commands.translate import translate
 from commands.extend import extend
 from commands.help_command import help_command
 
-
 COMMAND_PREFIX = "!"
 
 all_commands = {}
@@ -28,8 +27,6 @@ add_command(help_command)
 async def run_command(message: discord.Message):
     name, *arg = message.content.strip().split(" ", 1)
     if name in all_commands:
+        command = all_commands[name]
         arg = arg[0] if arg else None
-        if arg:
-            await all_commands[name].run(msg=message, arg=arg)
-        else:
-            await all_commands[name].run(msg=message)
+        await command.run(msg=message, arg=arg)

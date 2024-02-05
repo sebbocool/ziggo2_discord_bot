@@ -6,7 +6,7 @@ import discord
 from commands.command import Command
 
 
-async def bomba(msg: discord.Message, arg: str):
+async def bomba(msg: discord.Message, arg: str | None):
     target = "the Medic" if arg is None else arg
 
     author = msg.author.mention
