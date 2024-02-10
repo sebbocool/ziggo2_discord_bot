@@ -1,6 +1,7 @@
 import discord
 
 from commands.command import Command
+from common.parsing import to_int
 
 ZIGGO_MENTION = '<@228889592055463948>'
 
@@ -10,10 +11,10 @@ async def pingziggo(msg: discord.Message, arg: str | None):
         await msg.channel.send("This command can only be used in #bot", reference=msg)
         return
 
-    amount = int(arg)
-    if amount == "" or (10 < int(amount) or int(amount) <= 0):
-        await msg.channel.send(ZIGGO_MENTION)
-        return
+    amount = to_int(arg, 1)
+
+    if amount > 10:
+        amount = 10
 
     for i in range(int(amount)):
         await msg.channel.send(ZIGGO_MENTION)
