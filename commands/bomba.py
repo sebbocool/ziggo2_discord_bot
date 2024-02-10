@@ -61,6 +61,6 @@ async def bomba(msg: discord.Message, arg: str | None):
 bomba = Command(
     name="bomba",
     arg="target",
-    description="Simulate a bomb, will you drop the medic or feed embarrassingly?",
+    description="Bomb your target. Will you drop the Medic or feed embarrassingly?",
     func=bomba
 )
