@@ -31,6 +31,7 @@ async def pingziggo(msg: discord.Message, arg: str | None):
 
 pingziggo = Command(
     name="pingziggo",
-    description=" [1-10]`: Need ziggo's attention? Is he late for the offi? Just wanna disturb? Go wild.",
+    arg=f"{MIN_AMOUNT}-{MAX_AMOUNT}",
+    description="Need ziggo's attention? Is he late for the offi? Just wanna disturb? Go wild.",
     func=pingziggo
 )

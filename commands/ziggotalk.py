@@ -19,6 +19,6 @@ def get_ziggo_quote():
 
 ziggotalk = Command(
     name="ziggotalk",
-    description="`: Need some motivation? Get a real quote from one of ziggo's logs.",
+    description="Need some motivation? Get a real quote from one of ziggo's logs.",
     func=ziggo_quote
 )

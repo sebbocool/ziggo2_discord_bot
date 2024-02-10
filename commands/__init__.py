@@ -1,5 +1,6 @@
 import discord
 
+from commands.command import Command
 from commands.ziggotalk import ziggotalk
 from commands.bomba import bomba
 from commands.pingziggo import pingziggo
@@ -9,11 +10,11 @@ from commands.help_command import help_command
 
 COMMAND_PREFIX = "!"
 
-all_commands = {}
+all_commands: dict[str, Command] = {}
 
 
-def add_command(command, prefix=COMMAND_PREFIX) -> None:
-    all_commands[prefix + command.get_name()] = command
+def add_command(cmd: Command, prefix=COMMAND_PREFIX) -> None:
+    all_commands[prefix + cmd.get_name()] = cmd
 
 
 add_command(ziggotalk)
@@ -27,6 +28,6 @@ add_command(help_command)
 async def run_command(message: discord.Message):
     name, *arg = message.content.strip().split(" ", 1)
     if name in all_commands:
-        command = all_commands[name]
+        cmd = all_commands[name]
         arg = arg[0] if arg else None
-        await command.run(msg=message, arg=arg)
+        await cmd.run(msg=message, arg=arg)

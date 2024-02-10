@@ -30,6 +30,7 @@ async def translate(msg: discord.Message, arg: str | None):
 
 translate = Command(
     name="to",
-    description=" [se/de/en/ja]`: Respond to a message to translate in to the selected target language.",
+    arg="se/de/en/ja",
+    description="Respond to a message to translate in to the selected target language.",
     func=translate
 )

@@ -15,4 +15,8 @@ async def extend(msg: discord.Message, _):
     await msg.channel.send(choice(responses))
 
 
-extend = Command("extend", "`: Tries to extend the reservation", extend)
+extend = Command(
+    name="extend",
+    description="Tries to extend the reservation",
+    func=extend
+)
