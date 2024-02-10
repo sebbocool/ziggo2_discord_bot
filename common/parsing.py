@@ -1,4 +1,4 @@
-def to_int(value: any, default: int = 0):
+def to_int(value: any, default: int = 0) -> int:
     """
     Convert a given value to an int or return a default value if conversion fails.
     :param value: The value to be converted.
