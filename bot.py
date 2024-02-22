@@ -1,6 +1,7 @@
 import discord
 import random
 
+from commands.ziggotalk import get_ziggo_quote
 from config import DISCORD_TOKEN
 from commands import run_command, COMMAND_PREFIX
 
@@ -26,6 +27,9 @@ class Ziggo2(discord.Client):
         if "@everyone" in message.content:
             await message.channel.send("https://media.tenor.com/uFeEjGFzmc0AAAAC/stop.gif", reference=message)
             return
+
+        if message.type == discord.MessageType.new_member:
+            await message.reply(get_ziggo_quote())
 
         if random.randint(1, 18) == 6:
             await add_random_reaction(message)
