@@ -1,6 +1,7 @@
 import discord
 
 from commands.command import Command
+from commands.friend import friend
 from commands.mge import mge
 from commands.ziggotalk import ziggotalk
 from commands.bomba import bomba
@@ -24,6 +25,7 @@ add_command(pingziggo)
 add_command(translate)
 add_command(extend, "!")
 add_command(mge)
+add_command(friend)
 add_command(help_command)
 
 
