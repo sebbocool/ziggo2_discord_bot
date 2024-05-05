@@ -11,6 +11,10 @@ def get_random_cannot_find_message() -> str:
         "I cannot find you...",
         "I can't find you :(",
         "I cannot find you :(",
+        "I can't find your voice channel...",
+        "I cannot find your voice channel...",
+        "I can't find your voice channel :(",
+        "I cannot find your voice channel :(",
         "Where are you?",
     ])
 
