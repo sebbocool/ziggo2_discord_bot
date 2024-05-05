@@ -23,6 +23,6 @@ Commands currently available:
 
 help_command = Command(
     name="help",
-    description="Shows this message",
+    description="Show this message.",
     func=help_command
 )

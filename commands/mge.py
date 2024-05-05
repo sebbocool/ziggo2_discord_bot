@@ -70,6 +70,6 @@ def get_random_arena() -> (str, int):
 mge = Command(
     name="mge",
     arg="target",
-    description="Fight someone in MGE",
+    description="Fight someone in MGE.",
     func=mge
 )

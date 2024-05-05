@@ -17,6 +17,6 @@ async def extend(msg: discord.Message, _):
 
 extend = Command(
     name="extend",
-    description="Tries to extend the reservation",
+    description="Tries to extend the reservation.",
     func=extend
 )
