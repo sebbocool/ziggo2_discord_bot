@@ -2,7 +2,6 @@ import discord
 import random
 
 from commands.ziggotalk import get_ziggo_quote
-from config import DISCORD_TOKEN
 from commands import run_command, COMMAND_PREFIX
 
 
@@ -52,11 +51,3 @@ class Ziggo2(discord.Client):
 
         if isinstance(channel, discord.VoiceChannel) and len(channel.members) == 1:
             await voice.disconnect(force=False)
-
-
-intents = discord.Intents.default()
-intents.message_content = True
-intents.members = True
-
-client = Ziggo2(intents=intents)
-client.run(DISCORD_TOKEN)
