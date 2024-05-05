@@ -7,5 +7,5 @@ The bot can be configured with environment variables, which can be found in [con
 To start the bot, run
 
 ```sh
-python bot.py
+main.py
 ```
