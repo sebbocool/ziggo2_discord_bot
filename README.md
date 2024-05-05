@@ -4,8 +4,4 @@ A discord bot made specifically for the Local Issues discord server to provide s
 
 The bot can be configured with environment variables, which can be found in [config.py](./config.py).
 
-To start the bot, run
-
-```sh
-python bot.py
-```
+To start the bot, run main.py
