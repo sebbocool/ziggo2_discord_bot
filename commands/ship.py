@@ -54,11 +54,12 @@ shipping_messages = {
         ":heartpulse: This is true love! Perfect match! :heartpulse:",
         ":sparkling_heart: You two are soulmates. Don’t ever let go! :sparkling_heart:",
         ":heart: THIS COUPLE IS PERFECT!! :heart:",
-    ]
+    ],
 }
 
+
 def get_shipping_message(score):
-    for index in range(10,110,10):
+    for index in range(10, 110, 10):
         if score <= index:
             return random.choice(shipping_messages[index])
     return ":grey_question: Unable to determine compatibility... :grey_question:"
@@ -135,13 +136,19 @@ async def ship(msg: discord.Message, arg: str | None):
 
     compatibility = calculate_compatibility(id1, id2)
 
-    await msg.channel.send(f":revolving_hearts: Shipping <@{id1}> and <@{id2}> !! :revolving_hearts:")
+    await msg.channel.send(
+        f":revolving_hearts: Shipping <@{id1}> and <@{id2}> !! :revolving_hearts:"
+    )
     await asyncio.sleep(1)
     await msg.channel.send(f":sparkles: Their ship name is **{shipname.upper()}**")
     await asyncio.sleep(1)
-    await msg.channel.send(f":chart_with_upwards_trend: Their compatibility is **{compatibility}%**")
+    await msg.channel.send(
+        f":chart_with_upwards_trend: Their compatibility is **{compatibility}%**"
+    )
     await asyncio.sleep(1)
     await msg.channel.send(get_shipping_message(compatibility))
 
 
-ship = Command(name="ship", arg="people to ship", description="Ship two people.", func=ship)
+ship = Command(
+    name="ship", arg="people to ship", description="Ship two people.", func=ship
+)
