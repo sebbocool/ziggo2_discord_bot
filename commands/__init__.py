@@ -8,6 +8,7 @@ from commands.bomba import bomba
 from commands.pingziggo import pingziggo
 from commands.translate import translate
 from commands.extend import extend
+from commands.ship import ship
 from commands.help_command import help_command
 
 COMMAND_PREFIX = "!"
@@ -26,6 +27,7 @@ add_command(translate)
 add_command(extend, "!")
 add_command(mge)
 add_command(friend)
+add_command(ship)
 add_command(help_command)
 
 
