@@ -5,11 +5,9 @@ from commands.ziggotalk import get_ziggo_quote
 from commands import run_command, COMMAND_PREFIX
 
 
-async def add_random_reaction(message: discord.Message):
-    beast_emoji = discord.utils.get(message.guild.emojis, name="beast")
-    cringe_emoji = discord.utils.get(message.guild.emojis, name="cringe")
-    ziggo_emoji = discord.utils.get(message.guild.emojis, name="ziggo")
-    emoji_to_use = random.choice([beast_emoji, cringe_emoji, ziggo_emoji])
+async def add_random_reaction(message: discord.Message, emojis):
+            
+    emoji_to_use = random.choice(emojis)
     if emoji_to_use:
         await message.add_reaction(emoji_to_use)
 
@@ -31,7 +29,7 @@ class Ziggo2(discord.Client):
             await message.reply(get_ziggo_quote())
 
         if random.randint(1, 18) == 6:
-            await add_random_reaction(message)
+            await add_random_reaction(message,self.emojis)
 
         if message.content.startswith(COMMAND_PREFIX):
             await run_command(message)
