@@ -1,8 +1,8 @@
 import discord
 from commands.command import Command
-import asyncio
-
 import random
+import hashlib
+import re
 
 shipping_messages = {
     10: [
@@ -70,15 +70,12 @@ def calculate_compatibility(id1: int, id2: int) -> int:
 
 
 def extract_name(user: discord.User | discord.Member) -> str:
-    if user.nick is not None:
+    if isinstance(user, discord.Member) and user.nick:
         return user.nick
-
-    if user.global_name is not None:
+    if user.global_name:
         return user.global_name
-
-    if user.name is not None:
+    if user.name:
         return user.name
-
     return str(user)
 
 
@@ -111,42 +108,62 @@ def generate_ship_name(name1: str, name2: str) -> str:
 
 
 async def ship(msg: discord.Message, arg: str | None):
-
-    users = msg.mentions
-
-    if len(users) == 0:
+    if not arg:
         await msg.channel.send("Who should we ship?? :smiling_imp:")
         return
 
-    if len(users) > 2:
-        await msg.channel.send("No polyamory")
+    tokens = arg.strip().split()
+    if len(tokens) > 2:
+        await msg.channel.send("No polyamory, two users max.")
         return
 
-    if len(users) == 1:
-        name2 = extract_name(msg.author)
-        id2 = msg.author.id
-    else:
-        name2 = extract_name(users[1])
-        id2 = users[1].id
+    names = []
+    ids = []
 
-    name1 = extract_name(users[0])
-    id1 = users[0].id
+    mention_pattern = re.compile(r"<@!?(\d+)>")  # i hate i hate i hate
+
+    for token in tokens:
+        match = mention_pattern.match(token)
+        if match:
+            user_id = int(match.group(1))
+            user = await msg.guild.fetch_member(user_id)
+            if user:
+                name = extract_name(user)
+                names.append(name)
+                ids.append(user.id)
+        else:
+            name = token
+            names.append(name)
+            id_hash = int(hashlib.sha256(name.encode("utf-8")).hexdigest(), 16) % 10**10
+            ids.append(id_hash)
+
+    if len(names) < 2:
+        await msg.channel.send("Who should we ship?? :smiling_imp:")
+        return
+
+    name1, name2 = names[0], names[1]
+    id1, id2 = ids[0], ids[1]
 
     shipname = generate_ship_name(name1, name2)
-
     compatibility = calculate_compatibility(id1, id2)
 
-    await msg.channel.send(
-        f":revolving_hearts: Shipping <@{id1}> and <@{id2}> !! :revolving_hearts:"
+    def format_name(name, id):
+        member = msg.guild.get_member(id)
+        if member:
+            return f"<@{id}>"
+        else:
+            return name
+
+    display_name1 = format_name(name1, id1)
+    display_name2 = format_name(name2, id2)
+
+    message_content = (
+        f":revolving_hearts: Shipping {display_name1} and {display_name2} !! :revolving_hearts:\n"
+        f":sparkles: Their ship name is **{shipname.upper()}**\n"
+        f":chart_with_upwards_trend: Their compatibility is **{compatibility}%**\n"
+        f"{get_shipping_message(compatibility)}"
     )
-    await asyncio.sleep(1)
-    await msg.channel.send(f":sparkles: Their ship name is **{shipname.upper()}**")
-    await asyncio.sleep(1)
-    await msg.channel.send(
-        f":chart_with_upwards_trend: Their compatibility is **{compatibility}%**"
-    )
-    await asyncio.sleep(1)
-    await msg.channel.send(get_shipping_message(compatibility))
+    await msg.channel.send(message_content)
 
 
 ship = Command(
